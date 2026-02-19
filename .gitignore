@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg
+*.egg-info/
+dist/
+build/
+*.so
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Claude Code
+.claude/settings.local.json
+
+# uv
+.python-version
