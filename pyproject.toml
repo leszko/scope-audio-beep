@@ -1,11 +1,14 @@
 [project]
-name = "scope-plugin-audio-beep"
-version = "0.1.0"
+name = "scope-audio-beep"
+version = "0.2.0"
 requires-python = ">=3.12"
 dependencies = []
 
 [project.entry-points."scope"]
 scope_plugin_audio_beep = "scope_plugin_audio_beep.plugin"
+
+[tool.hatch.build.targets.wheel]
+packages = ["scope_plugin_audio_beep"]
 
 [build-system]
 requires = ["hatchling"]

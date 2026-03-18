@@ -12,8 +12,12 @@ class AudioBeepConfig(BasePipelineConfig):
 
     pipeline_id = "audio-beep"
     pipeline_name = "Audio Beep"
-    pipeline_description = "Generates periodic audio beeps with a flashing video frame"
+    pipeline_description = (
+        "Audio-only pipeline that generates periodic beep tones. "
+        "Useful for testing audio streaming without a GPU."
+    )
 
+    produces_video = False
     supports_prompts = False
 
     modes = {"text": ModeDefaults(default=True)}
