@@ -3,6 +3,6 @@ revision = 3
 requires-python = ">=3.12"
 
 [[package]]
-name = "scope-plugin-audio-beep"
-version = "0.1.0"
+name = "scope-audio-beep"
+version = "0.2.0"
 source = { editable = "." }
