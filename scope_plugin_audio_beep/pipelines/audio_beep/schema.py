@@ -18,6 +18,7 @@ class AudioBeepConfig(BasePipelineConfig):
     )
 
     produces_video = False
+    produces_audio = True
     supports_prompts = False
 
     modes = {"text": ModeDefaults(default=True)}

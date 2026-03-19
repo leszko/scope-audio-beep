@@ -18,6 +18,10 @@ SAMPLE_RATE = 48000
 # Prevents a large burst after long pauses or parameter changes.
 MAX_SAMPLES_PER_CALL = SAMPLE_RATE
 
+# Minimum chunk size before producing output. Matches WebRTC 20ms frame cadence
+# and prevents flooding the output queue with many tiny chunks.
+MIN_CHUNK_SAMPLES = int(0.02 * SAMPLE_RATE)  # 960 samples = 20ms
+
 # Short fade at beep edges to avoid clicks from abrupt signal discontinuities.
 FADE_DURATION = 0.002  # 2ms = 96 samples at 48kHz
 
@@ -56,7 +60,8 @@ class AudioBeepPipeline(Pipeline):
         n_samples = target_samples - self._samples_produced
         n_samples = min(n_samples, MAX_SAMPLES_PER_CALL)
 
-        if n_samples <= 0:
+        if n_samples < MIN_CHUNK_SAMPLES:
+            time.sleep(0.02)
             return {}
 
         # Free-running oscillator: global sample index keeps phase continuous
